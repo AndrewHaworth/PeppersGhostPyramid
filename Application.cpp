@@ -28,8 +28,8 @@ void camShow() {
 		frame90.copyTo(res(Rect(frame90.rows * 2, frame90.cols, frame90.cols, frame90.rows)));
 		frame180.copyTo(res(Rect(frame180.cols, frame180.rows * 2, frame180.cols, frame180.rows)));
 		frame270.copyTo(res(Rect(0, frame270.cols, frame270.cols, frame270.rows)));
-		//namedWindow("Hypercam", WINDOW_NORMAL);
-		namedWindow("Hypercam", WINDOW_GUI_EXPANDED);
+		namedWindow("Hypercam", WINDOW_NORMAL);
+		//namedWindow("Hypercam", WINDOW_GUI_EXPANDED);
 		//setWindowProperty("Hypercam", WND_PROP_FULLSCREEN, WINDOW_FULLSCREEN);
 
 		imshow("Hypercam", res);
