@@ -1,3 +1,7 @@
+#ifndef APP_H
+#define APP_H
 int main();
 void menu();
-void camshow();
+void camShow();
+void printMenu();
+#endif

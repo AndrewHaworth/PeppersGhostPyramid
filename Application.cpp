@@ -1,10 +1,11 @@
 #include<opencv2\opencv.hpp>
 #include"application.h"
 
-
-int main() {
-	menu();
-	return(0);
+void printMenu() {
+	using namespace std;
+	cout << "1. See Pepper's Ghost Pyramid Live\n"
+		"2. See an animation within the pyramid\n"
+		"3. Exit the Application" << endl;
 }
 
 void camShow() {
@@ -28,22 +29,48 @@ void camShow() {
 		frame90.copyTo(res(Rect(frame90.rows * 2, frame90.cols, frame90.cols, frame90.rows)));
 		frame180.copyTo(res(Rect(frame180.cols, frame180.rows * 2, frame180.cols, frame180.rows)));
 		frame270.copyTo(res(Rect(0, frame270.cols, frame270.cols, frame270.rows)));
-		namedWindow("Hypercam", WINDOW_NORMAL);
-		//namedWindow("Hypercam", WINDOW_GUI_EXPANDED);
-		//setWindowProperty("Hypercam", WND_PROP_FULLSCREEN, WINDOW_FULLSCREEN);
+		namedWindow("Peppercam", WINDOW_NORMAL);
+		//namedWindow("Peppercam", WINDOW_GUI_EXPANDED);
+		setWindowProperty("Peppercam", WND_PROP_FULLSCREEN, WINDOW_FULLSCREEN);
 
-		imshow("Hypercam", res);
-		if (waitKey(10) == 27)
-			break;
+		imshow("Peppercam", res);
+		if (waitKey(1) == 27) {
+			destroyWindow("Peppercam");
+			return;
+		}
 	}
 }
 
 void menu() {
 	using namespace std;
-	int i;
-	cout << "Hello and welcome to my project!" << endl;
-	cout << "What would you like to do today?" << endl;
-	cin >> i;
-	camShow();
+	int a;
+	cout << "Welcome to Pepper's Ghost Pyramid!" << endl;
+	for (;;) {
+		cout << "What would you like to do?" << endl;
+		printMenu();
+		cin >> a;
+		switch (a) {
+		case 1:
+			camShow();
+			break;
+		case 2:
+			cout << "Should animate" << endl;
+			break;
+		case 3:
+			return;
+		default:
+			cout << "Not a valid command!" << endl;
+			break;
+		}
+		//cv::destroyAllWindows();
+	}
+	cout << "Thank you!" << endl;
 }
+
+int main() {
+	menu();
+	return(0);
+}
+
+
 
