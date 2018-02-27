@@ -4,4 +4,6 @@ int main();
 void menu();
 void camShow();
 void printMenu();
+void edges();
+void dupeVideo();
 #endif
